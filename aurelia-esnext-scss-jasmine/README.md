@@ -4,14 +4,16 @@ Demo app for dumber bundler. More details in `gulpfile.js`
 
 ## Run in dev mode, plus watch
 ```
-gulp run
+npx gulp run
 ```
+
+If you installed gulp (`npm i -g gulp-cli`) globally, you can do `gulp run` without `npx`.
 
 ## Run in production mode, plus watch
 
 It updates index.html with hashed file name.
 ```
-cross-env NODE_ENV=production gulp run
+npx cross-env NODE_ENV=production gulp run
 ```
 
 ## Build in dev mode
@@ -25,14 +27,14 @@ gulp build
 
 Generates `scripts/*-bundle.[hash].js`, update index.html with hashed file name.
 ```
-cross-env NODE_ENV=production gulp build
+npx cross-env NODE_ENV=production gulp build
 ```
 
 ## To clear cache
 
 Clear transpiling cache by gulp-cache, and tracing cache by dumber.
 ```
-gulp clear-cache
+npx gulp clear-cache
 ```
 
 ## Headless browser (electron) test
