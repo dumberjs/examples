@@ -36,6 +36,7 @@ Clear transpiling cache by gulp-cache, and tracing cache by dumber.
 ```
 npx gulp clear-cache
 ```
+If you touch `.babelrc` file, you'd better do clear cache.
 
 ## Headless browser (electron) test
 ```
