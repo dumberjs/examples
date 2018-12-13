@@ -41,6 +41,8 @@ const dr = dumber({
   // Turn on hash for production build
   hash: isProduction && !isTest,
 
+  // Note prepend/append/deps only affects entry bundle.
+
   // prepend before amd loader.
   // dumber-module-loader is injected automatically by dumber bundler after prepends.
   // Here we load all jasmine stuff in global name space in test mode.
@@ -127,7 +129,7 @@ function buildJs(src) {
   }
 
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly
-  // we don't need gulp-sourcemaps anymore.
+  // we don't need gulp-sourcemaps any more.
   return gulp.src(src, {sourcemaps: !isProduction})
   .pipe(gulpif(!isProduction, plumber()))
   // Read src/main.js
