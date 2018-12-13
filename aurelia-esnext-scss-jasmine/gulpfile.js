@@ -35,7 +35,7 @@ const dr = dumber({
 
   // The special depsFinder to teach dumber about Aurelia convention.
   // Aurelia needs this special treatment because heavy convention.
-  // Not need for other frameworks like Vue/React/...
+  // No need for other frameworks like Vue/React/...
   depsFinder: auDepsFinder,
 
   // Turn on hash for production build
@@ -59,13 +59,13 @@ const dr = dumber({
   // append after amd loader and all module definitions in entry bundle.
   append: [
     // Kick off all test files.
-    // Note dumber-module-loader requirejs call accepts regexp which loads all matched module ids!
+    // Note dumber-module-loader requirejs call accepts regex which loads all matched module ids!
     isTest && "requirejs(['test/setup', /^test\\/.+\\.spec$/]);"
   ],
 
   // Explicit dependencies, can use either "deps" (short name) or "dependencies" (full name).
   // Here we load Aurelia packages which are not explicitly required by user code.
-  // Not need for other frameworks like Vue/React/...
+  // No need for other frameworks like Vue/React/...
   deps: [
     "aurelia-bootstrapper",
     "aurelia-loader-default",
