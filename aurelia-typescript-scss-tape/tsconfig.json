@@ -1,0 +1,23 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "es5",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "lib": ["es2017", "dom"],
+    "baseUrl": "src"
+  },
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}
