@@ -1,4 +1,5 @@
 import {PLATFORM} from 'aurelia-pal';
+import '@babel/polyfill';
 
 // Use dumber-module-loader,
 // This bit will be added to aurelia-loader-default
