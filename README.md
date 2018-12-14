@@ -2,8 +2,4 @@
 
 ## 1. aurelia-esnext-scss-jasmine
 
-* Aurelia framework
-* esnext with babel
-* scss
-* jasmine test
-
+## 2. aurelia-typescript-scss-tape
