@@ -29,7 +29,6 @@ const dr = dumber({
 
   // can turn off cache for production build
   // cache: !isProduction,
-  cache: false,
 
   // entry bundle name, dumber default is "entry-bundle"
   entryBundle: 'vendor-bundle',
