@@ -2,7 +2,7 @@
 
 Note we use `"esModuleInterop": true` in `tsconfig.json`, more details in [TypeScript 2.7 release notes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html).
 
-[Tape](https://github.com/substack/tape) is my choice of testing lib. With dumber, finally it can works with Aurelia.
+[Tape](https://github.com/substack/tape) is my choice of testing lib. With dumber, finally it can work with Aurelia.
 
 Demo app for dumber bundler. More details in `gulpfile.js`
 
