@@ -60,7 +60,7 @@ Very importantly, all tests files are in `src/test` for easier module resolution
 npm run browser-test
 ```
 
-Note in visible browser test, we are feeding browser-run with SpecRunner.html instead of vendor-bundle.js because we need jasmine css (in SpecRunner.html) for proper rendering.
+Then view the testing results in browser console.
 
 ## Manual visible other browser (firefox, edge, safari) test
 ```
