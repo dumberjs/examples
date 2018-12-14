@@ -113,9 +113,8 @@ function clearCache() {
 
 exports['clear-cache'] = clearCache;
 
+const transpile = typescript.createProject('tsconfig.json');
 function buildJs(src) {
-  let transpile = typescript.createProject('tsconfig.json');
-
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly
   // we don't need gulp-sourcemaps any more.
   return gulp.src(src, {sourcemaps: !isProduction})
