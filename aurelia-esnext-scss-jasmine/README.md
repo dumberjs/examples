@@ -20,7 +20,7 @@ npx cross-env NODE_ENV=production gulp run
 
 Generates `scripts/*-bundle.js`
 ```
-gulp build
+npx gulp build
 ```
 
 ## Build in production mode
