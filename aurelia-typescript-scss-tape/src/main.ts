@@ -29,5 +29,6 @@ export async function configure(aurelia: Aurelia) {
   aurelia.use.plugin('aurelia-testing');
   // @endif
 
-  return await aurelia.start().then(() => aurelia.setRoot());
+  await aurelia.start();
+  await aurelia.setRoot();
 }
