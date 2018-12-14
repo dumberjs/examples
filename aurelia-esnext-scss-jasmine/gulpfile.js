@@ -125,7 +125,7 @@ function buildJs(src) {
   let transpile = babel();
   // Use gulp-cache if not in production mode
   if (!isProduction) {
-    transpile = gulpCache(transpile, {name: 'bcx-ui'});
+    transpile = gulpCache(transpile, {name: 'aurelia-esnext-scss-jasmine'});
   }
 
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly
