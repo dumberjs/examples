@@ -4,6 +4,8 @@ Note we use `"esModuleInterop": true` in `tsconfig.json`, more details in [TypeS
 
 [Tape](https://github.com/substack/tape) is my choice of testing lib. With dumber, finally it can work with Aurelia.
 
+For how to setup jasmine with dumber, see the other example aurelia-esnext-scss-jasmine.
+
 Demo app for dumber bundler. More details in `gulpfile.js`
 
 ## Run in dev mode, plus watch
