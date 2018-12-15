@@ -5,9 +5,10 @@ Vue.use(VueRouter);
 
 const Home = { template: '<div>home</div>' };
 
+// dynamic loading can do either import('./foo') or import('./foo.js')
 const Foo = () => import('./foo');
 const Bar = () => import('./bar');
-const Baz = () => import('./baz');
+const Baz = () => import('./baz.js');
 
 const router = new VueRouter({
   mode: 'history',
