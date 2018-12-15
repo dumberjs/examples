@@ -30,7 +30,6 @@
     "gulp-plumber": "^1.2.1",
     "gulp-uglify-es": "^1.0.4",
     "jest": "^23.6.0",
-    "regenerator-runtime": "^0.13.1",
     "vue-template-compiler": "^2.5.21"
   },
   "scripts": {
