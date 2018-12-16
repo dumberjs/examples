@@ -1,17 +1,13 @@
 import React from 'react'
 import Home from '../../src/components/Home'
-import ReactTestUtils from 'react-dom/test-utils'
+import ShallowRenderer from 'react-test-renderer/shallow'
 
 describe('Home', () => {
   test('Home renders home', () => {
-    const comp = ReactTestUtils.renderIntoDocument(
-      <Home />,
-    )
-
-    const div = ReactTestUtils.findRenderedComponentWithType(comp, 'div')
-
-    // eslint-disable-next-line no-console
-    console.log('div', div)
-    expect(div.text).toBe('Home')
+    const renderer = new ShallowRenderer()
+    renderer.render(<Home />)
+    let result = renderer.getRenderOutput()
+    expect(result.type).toBe('div')
+    expect(result.props.children).toBe('Home')
   })
 })
