@@ -1,17 +1,18 @@
-var gulp = require('gulp');
-var del = require('del');
-var changedInPlace = require('gulp-changed-in-place');
-var babel = require('gulp-babel');
-var plumber = require('gulp-plumber');
-var dumber = require('gulp-dumber');
-var fs = require('fs');
-var gulpif = require('gulp-if');
-var terser = require('gulp-uglify-es').default;
-var gulpCache = require('gulp-cache');
-var browserSync = require('browser-sync');
-var historyApiFallback = require('connect-history-api-fallback/lib');
+/* eslint no-console: 0 */
+var gulp = require('gulp')
+var del = require('del')
+var changedInPlace = require('gulp-changed-in-place')
+var babel = require('gulp-babel')
+var plumber = require('gulp-plumber')
+var dumber = require('gulp-dumber')
+var fs = require('fs')
+var gulpif = require('gulp-if')
+var terser = require('gulp-uglify-es').default
+var gulpCache = require('gulp-cache')
+var browserSync = require('browser-sync')
+var historyApiFallback = require('connect-history-api-fallback/lib')
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production'
 
 const dr = dumber({
   // src folder is by default "src".
@@ -58,7 +59,7 @@ const dr = dumber({
     // Here for any local src
     if (!packageName) {
       // put all local src into app-bundle
-      return 'app-bundle';
+      return 'app-bundle'
     }
     // The codeSplit func does not need to return a valid bundle name.
     // For any undefined return, dumber put the module into entry bundle,
@@ -78,26 +79,26 @@ const dr = dumber({
   // If you turned on hash, you need this callback to update index.html
   onManifest: function(filenameMap) {
     // Update index.html entry-bundle.js with entry-bundle.hash...js
-    console.log('Update index.html with ' + filenameMap['entry-bundle.js']);
+    console.log('Update index.html with ' + filenameMap['entry-bundle.js'])
     const indexHtml = fs.readFileSync('_index.html').toString()
-      .replace('entry-bundle.js', filenameMap['entry-bundle.js']);
+      .replace('entry-bundle.js', filenameMap['entry-bundle.js'])
 
-    fs.writeFileSync('index.html', indexHtml);
+    fs.writeFileSync('index.html', indexHtml)
   }
-});
+})
 
 // clear both dumber (tracing) cache, and gulp-cache
 function clearCache() {
-  return Promise.all([dr.clearCache(), gulpCache.clearAll()]);
+  return Promise.all([dr.clearCache(), gulpCache.clearAll()])
 }
 
-exports['clear-cache'] = clearCache;
+exports['clear-cache'] = clearCache
 
 function buildJs(src) {
-  let transpile = babel();
+  let transpile = babel()
   // Use gulp-cache if not in production mode
   if (!isProduction) {
-    transpile = gulpCache(transpile, {name: 'connected-react-router-jest'});
+    transpile = gulpCache(transpile, {name: 'connected-react-router-jest'})
   }
 
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly
@@ -106,7 +107,7 @@ function buildJs(src) {
   .pipe(gulpif(!isProduction, plumber()))
   // In watch mode, use gulp-changed-in-place to send only updated files
   .pipe(changedInPlace({firstPass: true}))
-  .pipe(transpile);
+  .pipe(transpile)
 }
 
 function build() {
@@ -132,14 +133,14 @@ function build() {
   .pipe(gulpif(isProduction, terser({compress: false})))
 
   // Want to write bundle files? Sure, gulp can do it, dumber is too dumb to do it.
-  .pipe(gulp.dest('dist', {sourcemaps: !isProduction}));
+  .pipe(gulp.dest('dist', {sourcemaps: !isProduction}))
 }
 
-exports.build = build;
+exports.build = build
 
 // Clean up dist folder.
-function clean() { return del(['dist']); }
-exports.clean = clean;
+function clean() { return del(['dist']) }
+exports.clean = clean
 
 // Use browserSync as dev server
 const serve = gulp.series(
@@ -158,37 +159,37 @@ const serve = gulp.series(
           // the same /index.html as content, instead off 404 at /some/route.html
           historyApiFallback(),
           function(req, res, next) {
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            next();
+            res.setHeader('Access-Control-Allow-Origin', '*')
+            next()
           }
         ]
       }
     }, function(err, bs) {
-      if (err) return done(err);
-      let urls = bs.options.get('urls').toJS();
-      console.log(`Application Available At: ${urls.local}`);
-      console.log(`BrowserSync Available At: ${urls.ui}`);
-      done();
-    });
+      if (err) return done(err)
+      let urls = bs.options.get('urls').toJS()
+      console.log(`Application Available At: ${urls.local}`)
+      console.log(`BrowserSync Available At: ${urls.ui}`)
+      done()
+    })
   }
 )
 
 // Reload browserSync
 function reload(done) {
-  console.log('Refreshing the browser');
-  browserSync.reload();
-  done();
+  console.log('Refreshing the browser')
+  browserSync.reload()
+  done()
 }
 
 // Watch all js/html/scss files for rebuild and reload browserSync.
 function watch() {
-  return gulp.watch('src/**/*.js', gulp.series(build, reload));
+  return gulp.watch('src/**/*.js', gulp.series(build, reload))
 }
 
 const run = gulp.series(
   clean,
   serve,
   watch
-);
+)
 
-exports.run = run;
+exports.run = run
