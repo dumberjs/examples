@@ -1,0 +1,50 @@
+{
+  "name": "connected-react-router-jest",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "connected-react-router": "^6.0.0",
+    "history": "^4.7.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-hot-loader": "^4.6.0",
+    "react-redux": "^6.0.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "browser-sync": "^2.26.3",
+    "connect-history-api-fallback": "^1.5.0",
+    "cross-env": "^5.2.0",
+    "del": "^3.0.0",
+    "eslint": "^5.10.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.11.1",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-changed-in-place": "^2.3.0",
+    "gulp-dumber": "^0.6.2",
+    "gulp-if": "^2.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-uglify-es": "^1.0.4",
+    "jest": "^23.6.0",
+    "react-test-renderer": "^16.6.3"
+  },
+  "scripts": {
+    "lint": "eslint src test",
+    "pretest": "npm run lint",
+    "test": "jest"
+  }
+}

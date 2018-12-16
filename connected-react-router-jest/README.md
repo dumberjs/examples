@@ -1,10 +1,10 @@
-# Vue esnext lazy-loading (ES dynamic import) jest
+# Connected React Router Basic + jest
 
 Demo app for dumber bundler. More details in `gulpfile.js`.
 
-Used example code from https://github.com/vuejs/vue-router/tree/dev/examples/lazy-loading
+Used example code from https://github.com/supasate/connected-react-router/tree/master/examples/basic
 
-Note we didn't use Single File Component (`.vue` file), because Vue currently only provided `.vue` file support for webpack and browserify. There is an unofficial [gulp-vue-module](https://github.com/pandao/gulp-vue-module) for gulp support, but it seems neither complete nor very active, but looks enough to help this demo to load `.vue` file. Right now, I don't want to invest too much time on it.
+Note Hot Module Reload is not hooked up. No support of HMR in dumber yet.
 
 ## Run in dev mode, plus watch
 ```
