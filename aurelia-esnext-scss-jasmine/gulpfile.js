@@ -155,6 +155,11 @@ function buildHtml(src) {
   .pipe(changedInPlace({firstPass: true}));
 }
 
+function buildWasm(src) {
+  return gulp.src(src)
+  .pipe(changedInPlace({firstPass: true}));
+}
+
 function build() {
   // Merge all js/css/html file streams to feed greedy dumber.
   // Note scss was transpiled to css file by gulp-sass.
@@ -168,7 +173,8 @@ function build() {
     // when you put test code comp.spec.js side by side with comp.js.
     buildJs(isTest ? 'src/**/*.js' : ['src/**/*.js', '!src/test/**/*.js']),
     buildCss('src/**/*.scss'),
-    buildHtml('src/**/*.html')
+    buildHtml('src/**/*.html'),
+    buildWasm('src/**/*.wasm')
   )
 
   // Note we did extra call `dr()` here, this is designed to cater watch mode.

@@ -2,6 +2,8 @@
 
 Demo app for dumber bundler. More details in `gulpfile.js`
 
+`src/foo.js` shows direct importing a wasm file.
+
 ## Run in dev mode, plus watch
 ```
 npx gulp run
