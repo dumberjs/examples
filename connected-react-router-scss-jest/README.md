@@ -1,10 +1,12 @@
-# Connected React Router Basic + jest
+# Connected React Router + scss + jest
 
 Demo app for dumber bundler. More details in `gulpfile.js`.
 
 Used example code from https://github.com/supasate/connected-react-router/tree/master/examples/basic
 
 Note Hot Module Reload is not hooked up. No support of HMR in dumber yet.
+
+In App.js, we support `import './App.css';` to inject css to html head. Check `injectCss` option in `gulpfile.js`, it also shows the usage of `postcss-url` in gulp to replace css `url()` with inline base64 string. This behaves very similar with webpack's style-loader.
 
 ## Run in dev mode, plus watch
 ```

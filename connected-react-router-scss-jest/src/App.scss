@@ -1,0 +1,15 @@
+.app {
+  background-image: url('./react-icon.svg');
+  background-repeat: no-repeat;
+  background-size: 8rem 8rem;
+
+  padding-left: 8rem;
+  min-height: 8rem;
+
+  .nav {
+    a {
+      display: inline-block;
+      margin: 1rem 1rem 1rem 0;
+    }
+  }
+}

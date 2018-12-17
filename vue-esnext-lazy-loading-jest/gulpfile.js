@@ -120,12 +120,7 @@ function build() {
   // dumber knows nothing about .ts/.less/.scss/.md files,
   // gulp-* plugins transpiled them into js/css/html before
   // sending to dumber.
-
-  // Note we only pack src/test/ folder in test mode
-  // You don't have to use a folder for test code,
-  // For example, you can do ['src/**/*.js', '!src/**/*.spec.js']
-  // when you put test code comp.spec.js side by side with comp.js.
-  return  buildJs('src/**/*.js')
+  return buildJs('src/**/*.js')
 
   // Note we did extra call `dr()` here, this is designed to cater watch mode.
   // dumber here consumes (swallows) all incoming Vinyl files,

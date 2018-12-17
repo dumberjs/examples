@@ -21,6 +21,7 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.4.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -29,7 +30,6 @@
     "cross-env": "^5.2.0",
     "del": "^3.0.0",
     "eslint": "^5.10.0",
-    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.11.1",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
@@ -38,8 +38,12 @@
     "gulp-dumber": "^0.6.2",
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
     "gulp-uglify-es": "^1.0.4",
     "jest": "^23.6.0",
+    "merge2": "^1.2.3",
+    "postcss-url": "^8.0.0",
     "react-test-renderer": "^16.6.3"
   },
   "scripts": {

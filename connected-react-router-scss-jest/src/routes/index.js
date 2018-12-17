@@ -7,7 +7,7 @@ import NoMatch from '../components/NoMatch'
 import NavBar from '../components/NavBar'
 
 const routes = (
-  <div>
+  <div className="app">
     <NavBar />
     <Switch>
       <Route exact path="/" component={Home} />

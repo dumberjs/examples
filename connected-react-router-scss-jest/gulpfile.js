@@ -9,6 +9,11 @@ var fs = require('fs')
 var gulpif = require('gulp-if')
 var terser = require('gulp-uglify-es').default
 var gulpCache = require('gulp-cache')
+var sass = require('gulp-sass')
+var postcss = require('gulp-postcss')
+var postcssUrl = require('postcss-url')
+var merge2 = require('merge2')
+var autoprefixer = require('autoprefixer')
 var browserSync = require('browser-sync')
 var historyApiFallback = require('connect-history-api-fallback/lib')
 
@@ -29,6 +34,10 @@ const dr = dumber({
 
   // Turn on hash for production build
   hash: isProduction,
+
+  // injectCss is by default off
+  // Inject css onto html head for `import "some.css"` in JavaScript.
+  injectCss: true,
 
   // Note prepend/append/deps only affects entry bundle.
 
@@ -110,17 +119,36 @@ function buildJs(src) {
   .pipe(transpile)
 }
 
+function buildCss(src) {
+  return gulp.src(src, {sourcemaps: !isProduction})
+  .pipe(changedInPlace({firstPass: true}))
+  .pipe(sass().on('error', sass.logError))
+  .pipe(postcss([
+    autoprefixer(),
+    // use postcss-url to inline any image/font/svg.
+    // postcss-url by default use base64 for images, but
+    // encodeURIComponent for svg which does NOT work on
+    // some browsers.
+    // Here we enforce base64 encoding for all assets to
+    // improve compatibility on svg.
+    postcssUrl({url: 'inline', encodeType: 'base64'})
+  ]))
+}
+
 function build() {
   // dumber knows nothing about .ts/.less/.scss/.md files,
   // gulp-* plugins transpiled them into js/css/html before
   // sending to dumber.
 
-  // Note we only pack src/test/ folder in test mode
-  // You don't have to use a folder for test code,
-  // For example, you can do ['src/**/*.js', '!src/**/*.spec.js']
-  // when you put test code comp.spec.js side by side with comp.js.
-  return  buildJs('src/**/*.js')
-
+  // Merge all js/css/html file streams to feed greedy dumber.
+  // Note scss was transpiled to css file by gulp-sass.
+  // dumber knows nothing about .ts/.less/.scss/.md files,
+  // gulp-* plugins transpiled them into js/css/html before
+  // sending to dumber.
+  return merge2(
+    buildJs('src/**/*.js'),
+    buildCss('src/**/*.scss')
+  )
   // Note we did extra call `dr()` here, this is designed to cater watch mode.
   // dumber here consumes (swallows) all incoming Vinyl files,
   // Then generates new Vinyl files for all output bundle files.
@@ -183,7 +211,7 @@ function reload(done) {
 
 // Watch all js/html/scss files for rebuild and reload browserSync.
 function watch() {
-  return gulp.watch('src/**/*.js', gulp.series(build, reload))
+  return gulp.watch('src/**/*.{js,scss}', gulp.series(build, reload))
 }
 
 const run = gulp.series(
