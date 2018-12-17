@@ -124,7 +124,7 @@ function buildJs(src) {
   // conditional plugin loading which creates extra trouble for tracer/bundler.
   // With this preprocessed static plugin loading, aurelia-testing is
   // auto-traced in test mode, but not in any other env.
-  .pipe(preprocess({isProduction, isTest}))
+  .pipe(preprocess({context: {isProduction, isTest}}))
   // In watch mode, use gulp-changed-in-place to send only updated files
   .pipe(changedInPlace({firstPass: true}))
   .pipe(transpile());

@@ -18,14 +18,14 @@ export function configure(aurelia) {
   // aurelia.use.feature('resources');
   aurelia.use.standardConfiguration();
 
-  // @ifdef isProduction
+  // @if isProduction
   aurelia.use.developmentLogging('warn');
   // @endif
-  // @ifdef !isProduction
+  // @if !isProduction
   aurelia.use.developmentLogging('info');
   // @endif
 
-  // @ifdef isTest
+  // @if isTest
   aurelia.use.plugin('aurelia-testing');
   // @endif
 
