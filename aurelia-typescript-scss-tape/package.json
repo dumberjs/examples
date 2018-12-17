@@ -10,7 +10,7 @@
   "devDependencies": {
     "aurelia-deps-finder": "^1.1.1",
     "aurelia-testing": "^1.0.0",
-    "autoprefixer": "^9.4.2",
+    "autoprefixer": "^9.4.3",
     "browser-sync": "^2.26.3",
     "connect-history-api-fallback": "^1.5.0",
     "cross-env": "^5.2.0",
@@ -31,7 +31,7 @@
     "sass-lint": "^1.12.1",
     "tap-dot": "^2.0.0",
     "tape": "^4.9.1",
-    "tape-run": "^4.0.0",
+    "tape-run": "^5.0.0",
     "typescript": "^3.2.2"
   },
   "scripts": {
