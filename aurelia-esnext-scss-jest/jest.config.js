@@ -1,5 +1,5 @@
 module.exports = {
-  // This is to teach jest where to load an aurelia module,
+  // This is to teach jest(actually NODE_PATH) where to load an aurelia module,
   // when aurelia-loader requests module "a/b",
   // jest will try src/a/b.js.
   modulePaths: [
