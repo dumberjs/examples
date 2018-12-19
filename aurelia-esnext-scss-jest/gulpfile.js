@@ -131,7 +131,8 @@ function buildJs(src) {
 
 function buildCss(src) {
   return gulp.src(src, {sourcemaps: !isProduction})
-  .pipe(changedInPlace({firstPass: true}))
+  // scss is not one-to-one transform, cannot use changedInPlace to check changed file
+  // scss is many-to-one transform (muliple _partial.scss files)
   .pipe(sass().on('error', sass.logError))
   .pipe(postcss([autoprefixer()]));
 }
