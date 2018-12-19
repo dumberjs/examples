@@ -45,4 +45,4 @@ npm test
 
 jest tests in Nodejs env, it is totally irrelevant with dumber (which only prepare your code for browser).
 
-There are some config for jest in package.json.
+There are some config for jest in `jest.config.js`.

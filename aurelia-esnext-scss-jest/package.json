@@ -41,16 +41,6 @@
     "merge2": "^1.2.3",
     "sass-lint": "^1.12.1"
   },
-  "jest": {
-    "modulePaths": [
-      "<rootDir>/src",
-      "<rootDir>/node_modules"
-    ],
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ],
-    "testEnvironment": "node"
-  },
   "scripts": {
     "sass-lint": "sass-lint -c .sass-lint.yml 'src/**/*.scss'",
     "eslint": "eslint src",

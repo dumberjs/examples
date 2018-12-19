@@ -26,6 +26,9 @@ export function configure(aurelia) {
   // @endif
 
   // @if isTest
+  // Note in jest test, it doesn't use gulp-preprocess.
+  // all @if conditions are no-op in jest test mode,
+  // So aurelia-testing will be still loaded in jest.
   aurelia.use.plugin('aurelia-testing');
   // @endif
 

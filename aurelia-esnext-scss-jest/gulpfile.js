@@ -38,7 +38,7 @@ const dr = dumber({
   depsFinder: auDepsFinder,
 
   // Turn on hash for production build
-  hash: isProduction && !isTest,
+  hash: isProduction,
 
   // Note prepend/append/deps only affects entry bundle.
 
@@ -69,9 +69,7 @@ const dr = dumber({
   //   for any local src file, the package name is undefined
   //   for npm package file "node_modules/foo/bar.js", the package name is "foo"
   //   for npm package file "node_modules/@scoped/foo/bar.js", the package name is "@scoped/foo"
-
-  // Here we skip code splitting in test mode.
-  codeSplit: isTest ? undefined : function(moduleId, packageName) {
+  codeSplit: function(moduleId, packageName) {
     // Here for any local src, put into app-bundle
     if (!packageName) return 'app-bundle';
     // The codeSplit func does not need to return a valid bundle name.
@@ -90,7 +88,7 @@ const dr = dumber({
   //   "other-bundle.js": "other-bundle.js"
   // }
   // If you turned on hash, you need this callback to update index.html
-  onManifest: isTest ? undefined : function(filenameMap) {
+  onManifest: function(filenameMap) {
     // Update index.html vendor-bundle.js with vendor-bundle.hash...js
     console.log('Update index.html with ' + filenameMap['vendor-bundle.js']);
     const indexHtml = fs.readFileSync('_index.html').toString()
@@ -123,7 +121,7 @@ function buildJs(src) {
   // conditional plugin loading which creates extra trouble for tracer/bundler.
   // With this preprocessed static plugin loading, aurelia-testing is
   // auto-traced in test mode, but not in any other env.
-  .pipe(preprocess({context: {isProduction, isTest}}))
+  .pipe(preprocess({context: {isProduction, isTest: false}}))
   // In watch mode, use gulp-changed-in-place to send only updated files
   .pipe(changedInPlace({firstPass: true}))
   .pipe(transpile);
@@ -158,7 +156,7 @@ function build() {
     // You don't have to use a folder for test code,
     // For example, you can do ['src/**/*.js', '!src/**/*.spec.js']
     // when you put test code comp.spec.js side by side with comp.js.
-    buildJs(isTest ? 'src/**/*.js' : ['src/**/*.js', '!src/test/**/*.js']),
+    buildJs(['src/**/*.js', '!src/test/**/*.js']),
     buildCss('src/**/*.scss'),
     buildHtml('src/**/*.html'),
     buildWasm('src/**/*.wasm')
