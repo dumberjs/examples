@@ -18,7 +18,6 @@ var browserSync = require('browser-sync');
 var historyApiFallback = require('connect-history-api-fallback/lib');
 
 const isProduction = process.env.NODE_ENV === 'production';
-const isTest = process.env.NODE_ENV === 'test';
 
 const dr = dumber({
   // src folder is by default "src".

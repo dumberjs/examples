@@ -22,7 +22,7 @@ describe('Component foo', () => {
   it('should render message', done => {
     component.create(bootstrap).then(() => {
       const view = component.element;
-      expect(view.innerText.includes('Foo!')).toBe(true);
+      expect(view.textContent.includes('Foo!')).toBe(true);
       done();
     }).catch(e => {
       fail(e);

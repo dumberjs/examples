@@ -12,7 +12,7 @@ test('should render message', t => {
   .then(
     () => {
       const view = component.element;
-      t.equal(view['innerText'], 'Foo!');
+      t.equal(view.textContent.trim(), 'Foo!');
     },
     e => {
       t.fail(e);

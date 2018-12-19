@@ -56,9 +56,7 @@
     "eslint": "eslint src",
     "htmlhint": "htmlhint -c .htmlhintrc src",
     "lint": "npm run eslint && npm run sass-lint && npm run htmlhint",
-    "pretest": "npm run lint && npm run test-build",
-    "test-build": "cross-env NODE_ENV=test gulp build",
-    "test": "tape-run < scripts/vendor-bundle.js | tap-dot",
-    "browser-test": "npm run test-build && browser-run --input html --static . --browser chrome < SpecRunner.html"
+    "pretest": "npm run lint",
+    "test": "jest"
   }
 }

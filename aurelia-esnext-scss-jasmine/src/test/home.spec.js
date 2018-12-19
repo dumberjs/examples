@@ -22,7 +22,7 @@ describe('Component home', () => {
   it('should render message', done => {
     component.create(bootstrap).then(() => {
       const view = component.element;
-      expect(view.innerText).toBe('Home!');
+      expect(view.textContent.trim()).toBe('Home!');
       done();
     }).catch(e => {
       fail(e);
