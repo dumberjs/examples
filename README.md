@@ -2,6 +2,7 @@
 
 * aurelia-esnext-scss-jasmine
   - shows direct importing a wasm file
+* aurelia-esnext-scss-jest
 * aurelia-typescript-scss-tape
 * vue-esnext-lazy-loading-jest
   - shows ES Dynamic Import
