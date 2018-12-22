@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var del = require('del');
-var changedInPlace = require('gulp-changed-in-place');
 var babel = require('gulp-babel');
 var plumber = require('gulp-plumber');
 var dumber = require('gulp-dumber');
@@ -130,7 +129,7 @@ function buildJs(src) {
 
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly
   // we don't need gulp-sourcemaps any more.
-  return gulp.src(src, {sourcemaps: !isProduction})
+  return gulp.src(src, {sourcemaps: !isProduction, since: gulp.lastRun(build)})
   .pipe(gulpif(!isProduction, plumber()))
   // Read src/main.js
   // We use gulp-preprocess to preprocess main.js. So we don't need any
@@ -138,27 +137,15 @@ function buildJs(src) {
   // With this preprocessed static plugin loading, aurelia-testing is
   // auto-traced in test mode, but not in any other env.
   .pipe(preprocess({context: {isProduction, isTest}}))
-  // In watch mode, use gulp-changed-in-place to send only updated files
-  .pipe(changedInPlace({firstPass: true}))
   .pipe(transpile);
 }
 
 function buildCss(src) {
   return gulp.src(src, {sourcemaps: !isProduction})
-  // scss is not one-to-one transform, cannot use changedInPlace to check changed file
+  // scss is not one-to-one transform, cannot use {since: lastRun} to check changed file
   // scss is many-to-one transform (muliple _partial.scss files)
   .pipe(sass().on('error', sass.logError))
   .pipe(postcss([autoprefixer()]));
-}
-
-function buildHtml(src) {
-  return gulp.src(src)
-  .pipe(changedInPlace({firstPass: true}));
-}
-
-function buildWasm(src) {
-  return gulp.src(src)
-  .pipe(changedInPlace({firstPass: true}));
 }
 
 function build() {
@@ -174,8 +161,7 @@ function build() {
     // when you put test code comp.spec.js side by side with comp.js.
     buildJs(isTest ? 'src/**/*.js' : ['src/**/*.js', '!src/test/**/*.js']),
     buildCss('src/**/*.scss'),
-    buildHtml('src/**/*.html'),
-    buildWasm('src/**/*.wasm')
+    gulp.src('src/**/*.{html,wasm}', {since: gulp.lastRun(build)})
   )
 
   // Note we did extra call `dr()` here, this is designed to cater watch mode.

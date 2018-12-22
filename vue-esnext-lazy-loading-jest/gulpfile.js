@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var del = require('del');
-var changedInPlace = require('gulp-changed-in-place');
 var babel = require('gulp-babel');
 var plumber = require('gulp-plumber');
 var dumber = require('gulp-dumber');
@@ -109,10 +108,8 @@ function buildJs(src) {
 
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly
   // we don't need gulp-sourcemaps any more.
-  return gulp.src(src, {sourcemaps: !isProduction})
+  return gulp.src(src, {sourcemaps: !isProduction, since: gulp.lastRun(build)})
   .pipe(gulpif(!isProduction, plumber()))
-  // In watch mode, use gulp-changed-in-place to send only updated files
-  .pipe(changedInPlace({firstPass: true}))
   .pipe(transpile);
 }
 

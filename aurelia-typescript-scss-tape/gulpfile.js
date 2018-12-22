@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var del = require('del');
-var changedInPlace = require('gulp-changed-in-place');
 var typescript = require('gulp-typescript');
 var plumber = require('gulp-plumber');
 var dumber = require('gulp-dumber');
@@ -116,7 +115,7 @@ const transpile = typescript.createProject('tsconfig.json');
 function buildJs(src) {
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly
   // we don't need gulp-sourcemaps any more.
-  return gulp.src(src, {sourcemaps: !isProduction})
+  return gulp.src(src, {sourcemaps: !isProduction, since: gulp.lastRun(build)})
   // use plumber to not stop build on error in dev mode
   .pipe(gulpif(!isProduction && !isTest, plumber()))
   // Read src/main.ts
@@ -125,22 +124,15 @@ function buildJs(src) {
   // With this preprocessed static plugin loading, aurelia-testing is
   // auto-traced in test mode, but not in any other env.
   .pipe(preprocess({context: {isProduction, isTest}}))
-  // In watch mode, use gulp-changed-in-place to send only updated files
-  .pipe(changedInPlace({firstPass: true}))
   .pipe(transpile());
 }
 
 function buildCss(src) {
   return gulp.src(src, {sourcemaps: !isProduction})
-  // scss is not one-to-one transform, cannot use changedInPlace to check changed file
+  // scss is not one-to-one transform, cannot use {since: lastRun} to check changed file
   // scss is many-to-one transform (muliple _partial.scss files)
   .pipe(sass().on('error', sass.logError))
   .pipe(postcss([autoprefixer()]));
-}
-
-function buildHtml(src) {
-  return gulp.src(src)
-  .pipe(changedInPlace({firstPass: true}));
 }
 
 function build() {
@@ -157,7 +149,7 @@ function build() {
     // when you put test code comp.spec.ts side by side with comp.ts.
     buildJs(isTest ? 'src/**/*.ts' : ['src/**/*.ts', '!src/test/**/*.ts']),
     buildCss('src/**/*.scss'),
-    buildHtml('src/**/*.html')
+    gulp.src('src/**/*.html', {since: gulp.lastRun(build)})
   )
 
   // Note we did extra call `dr()` here, this is designed to cater watch mode.
