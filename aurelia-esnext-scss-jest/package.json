@@ -29,7 +29,7 @@
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-cache": "^1.0.2",
-    "gulp-dumber": "^0.6.4",
+    "gulp-dumber": "^0.7.0",
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
@@ -42,7 +42,7 @@
   },
   "scripts": {
     "sass-lint": "sass-lint -c .sass-lint.yml 'src/**/*.scss'",
-    "eslint": "eslint src",
+    "eslint": "eslint src test",
     "htmlhint": "htmlhint -c .htmlhintrc src",
     "lint": "npm run eslint && npm run sass-lint && npm run htmlhint",
     "pretest": "npm run lint",

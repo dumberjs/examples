@@ -34,11 +34,7 @@ const dr = dumber({
   // Turn on hash for production build
   hash: isProduction,
 
-  // injectCss is by default off
-  // Inject css onto html head for `import "some.css"` in JavaScript.
-  injectCss: true,
-
-  // Note prepend/append/deps only affects entry bundle.
+  // Note prepend/append only affects entry bundle.
 
   // prepend before amd loader.
   // dumber-module-loader is injected automatically by dumber bundler after prepends.

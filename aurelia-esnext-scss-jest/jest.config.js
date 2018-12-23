@@ -9,7 +9,7 @@ module.exports = {
 
   // To load aurelia-loader-nodejs and aurelia-pal-browser
   setupFiles: [
-    "<rootDir>/src/test/setup.js"
+    "<rootDir>/test/setup.js"
   ],
 
   // Note different from normal aurelia jest setup

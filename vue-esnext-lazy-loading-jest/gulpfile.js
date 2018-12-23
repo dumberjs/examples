@@ -28,7 +28,7 @@ const dr = dumber({
   // Turn on hash for production build
   hash: isProduction,
 
-  // Note prepend/append/deps only affects entry bundle.
+  // Note prepend/append only affects entry bundle.
 
   // prepend before amd loader.
   // dumber-module-loader is injected automatically by dumber bundler after prepends.
@@ -44,7 +44,7 @@ const dr = dumber({
     // This explicit dep overwrites vue's main file from 'dist/vue.runtime.esm.js' to 'dist/vue.js'.
     // Since dumber didn't have `.vue` file support, we have to use dist/vue.js which includes
     // template compiler.
-    {name: 'vue', location: 'node_modules/vue', main: isProduction ? 'dist/vue.min.js' : 'dist/vue.js'}
+    {name: 'vue', main: isProduction ? 'dist/vue.min.js' : 'dist/vue.js'}
   ],
 
   // Code split is the feature that dumber really kicks ass.

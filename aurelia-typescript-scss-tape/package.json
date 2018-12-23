@@ -18,7 +18,7 @@
     "eslint": "^5.10.0",
     "gulp": "^4.0.0",
     "gulp-cache": "^1.0.2",
-    "gulp-dumber": "^0.6.4",
+    "gulp-dumber": "^0.7.0",
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",

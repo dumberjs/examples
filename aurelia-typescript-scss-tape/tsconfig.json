@@ -15,7 +15,8 @@
     "baseUrl": "src"
   },
   "include": [
-    "./src/**/*.ts"
+    "./src/**/*.ts",
+    "./test/**/*.ts"
   ],
   "atom": {
     "rewriteTsconfig": false

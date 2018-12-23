@@ -40,7 +40,7 @@ const dr = dumber({
   // Turn on hash for production build
   hash: isProduction && !isTest,
 
-  // Note prepend/append/deps only affects entry bundle.
+  // Note prepend/append only affects entry bundle.
 
   // prepend before amd loader.
   // dumber-module-loader is injected automatically by dumber bundler after prepends.
@@ -59,7 +59,8 @@ const dr = dumber({
   append: [
     // Kick off all test files.
     // Note dumber-module-loader requirejs call accepts regex which loads all matched module ids!
-    isTest && "requirejs(['test/setup', /^test\\/.+\\.spec$/]);"
+    // Note all module ids are relative to dumber option "src" (default to 'src') folder.
+    isTest && "requirejs(['../test/setup', /^\\.\\.\\/test\\/.+\\.spec$/]);"
   ],
 
   // Explicit dependencies, can use either "deps" (short name) or "dependencies" (full name).
@@ -141,9 +142,9 @@ function buildJs(src) {
 }
 
 function buildCss(src) {
-  return gulp.src(src, {sourcemaps: !isProduction})
   // scss is not one-to-one transform, cannot use {since: lastRun} to check changed file
   // scss is many-to-one transform (muliple _partial.scss files)
+  return gulp.src(src, {sourcemaps: !isProduction})
   .pipe(sass().on('error', sass.logError))
   .pipe(postcss([autoprefixer()]));
 }
@@ -155,11 +156,7 @@ function build() {
   // gulp-* plugins transpiled them into js/css/html before
   // sending to dumber.
   return merge2(
-    // Note we only pack src/test/ folder in test mode
-    // You don't have to use a folder for test code,
-    // For example, you can do ['src/**/*.js', '!src/**/*.spec.js']
-    // when you put test code comp.spec.js side by side with comp.js.
-    buildJs(isTest ? 'src/**/*.js' : ['src/**/*.js', '!src/test/**/*.js']),
+    buildJs(isTest ? ['src/**/*.js', 'test/**/*.js'] : 'src/**/*.js'),
     buildCss('src/**/*.scss'),
     gulp.src('src/**/*.{html,wasm}', {since: gulp.lastRun(build)})
   )
