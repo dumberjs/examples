@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+
+  .demo {
+    margin: 1rem;
+  }
+}
+
+a.menu-link {
+  margin: 1rem;
+  font-size: 2rem;
+
+  text-decoration: none;
+
+  &.active {
+    font-weight: bold;
+    color: blue;
+  }
+}

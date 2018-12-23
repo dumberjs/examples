@@ -1,0 +1,19 @@
+.banner {
+  display: block;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid lightgrey;
+
+  &::before {
+    font-weight: bold;
+  }
+
+  &.info::before {
+    content: 'INFO';
+  }
+
+  &.warning::before {
+    content: 'WARN';
+    color: orange;
+  }
+}

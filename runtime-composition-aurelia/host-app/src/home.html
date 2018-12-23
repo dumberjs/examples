@@ -1,0 +1,22 @@
+<template>
+  <banner>
+    This is a demo for runtime composition, the layout of this banner is provided by a plugin "shared-ui".<br>
+    The "shared-ui" is reused in "plugin-app-aurelia" which you can load into this app.
+  </banner>
+
+  <banner if.bind="error" type="warning">${error}</banner>
+
+  <h4>Load a plugin</h4>
+  <p>Note in real app, a plugin should provide both backend and front-end logic, following params should be provided by the meta-data of the plugin.</p>
+
+  <button click.trigger="fillupAu()">Fill up info for plugin-app-aurelia</button>
+  <button click.trigger="fillupVue()">Fill up info for plugin-app-vue</button>
+  <button click.trigger="fillupReact()">Fill up info for plugin-app-react</button>
+  <br>
+  <div>Plugin Name</div>
+  <input type="text" style="width:20rem;" value.bind="pluginName"><br>
+  <div>Plugin Bundle file URL</div>
+  <input type="text" style="width:20rem;" value.bind="pluginUrl"><br>
+  <button disabled.bind="!pluginName || !pluginUrl || isLoading" click.trigger="loadPlugin()">Load</button>
+
+</template>

@@ -1,0 +1,16 @@
+<template>
+  <require from="./app.css"></require>
+
+  <banner>
+    Note this banner style is provided by host-app.
+  </banner>
+
+  <p>Array of reorderable items, provided by additional aurelia plugin bcx-aurelia-reorderable-repeat</p>
+
+  <div class="list-container">
+    <div class="list-item" reorderable-repeat.for="item of items">
+      ${item.name}
+    </div>
+  </div>
+
+</template>
