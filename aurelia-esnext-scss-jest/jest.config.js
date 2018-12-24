@@ -19,5 +19,5 @@ module.exports = {
   // not aurelia-pal-nodejs.
 
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.js', '!src/test/*.js']
+  collectCoverageFrom: ['src/**/*.js']
 };
