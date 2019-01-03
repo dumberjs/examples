@@ -21,9 +21,7 @@ export class LoadForeignExtension {
     // load the entry module by convention,
     // all foreign extensions need to take control of the
     // <div id="extension"></div> in ./load-foreign-extension.html
-    return requirejs([entry])
-    .then(results => {
-      const [extension] = results;
+    return requirejs([entry], extension => {
       // only extension written in aurelia has entry moduleId
       const {
         moduleId, configure, // extension in aurelia, uses moduleId and configure.
