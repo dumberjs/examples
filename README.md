@@ -8,3 +8,8 @@
   - shows ES Dynamic Import
 * connected-react-router-scss-jest
   - shows import css file through JavaScript
+
+## Advanced demos
+
+* runtime-composition-aurelia
+  - runtime composition of a base app + extension apps

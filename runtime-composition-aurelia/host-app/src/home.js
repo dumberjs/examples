@@ -2,9 +2,11 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 import {inject} from 'aurelia-framework';
 import {parse} from 'dumber-module-loader/dist/id-utils';
 
-// only apply name space for user module space
-// note we use global.define here to avoid confusing dumber's code analysis.
-// global is one of supported Nodejs global variables.
+// In future, I might push this feature into dumber or dumber-module-loader.
+//
+// Only apply name space for user module space.
+// Note we use global.define here to avoid confusing dumber's code analysis.
+// global is one of supported Nodejs global variables in dumber bundler.
 function makeNamespacedDefine(namespace) {
   const wrapped = function(moduleId, deps, cb) {
     // only add namespace for modules in user space
