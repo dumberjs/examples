@@ -7,7 +7,9 @@ import {parse} from 'dumber-module-loader/dist/id-utils';
 // global is one of supported Nodejs global variables.
 function makeNamespacedDefine(namespace) {
   const wrapped = function(moduleId, deps, cb) {
-    if (global.define.currentSpace() === 'user') {
+    // only add namespace for modules in user space
+    // also skip any ext: plugin (a dumber-module-loader feature)
+    if (global.define.currentSpace() === 'user' && !moduleId.startsWith('ext:')) {
       const parsed = parse(moduleId);
       return global.define(parsed.prefix + namespace + '/' + parsed.bareId, deps, cb);
     } else {

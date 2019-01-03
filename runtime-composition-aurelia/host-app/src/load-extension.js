@@ -25,9 +25,10 @@ export class LoadForeignExtension {
     .then(results => {
       const [extension] = results;
       // only extension written in aurelia has entry moduleId
-      // extension in aurelia, uses moduleId and configure.
-      // extension in other libs, uses load and unload.
-      const {moduleId, configure, load, unload} = extension;
+      const {
+        moduleId, configure, // extension in aurelia, uses moduleId and configure.
+        load, unload // extension in other libs, uses load and unload.
+      } = extension;
 
       if (configure) {
         const config = new FrameworkConfiguration(this.au);
@@ -48,6 +49,8 @@ export class LoadForeignExtension {
         this._unload = unload;
         return Promise.resolve(load());
       }
+
+      throw new Error(`module "${entry}" did not define either {configure(), moduleId} or {load, unload}.`);
     });
   }
 

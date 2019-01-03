@@ -22,5 +22,6 @@ exports.default = gulp.series(
   buildSharedUI,
   buildPart('extension-app-aurelia'),
   buildPart('extension-app-vue'),
+  buildPart('extension-app-react'),
   runHostApp
 );

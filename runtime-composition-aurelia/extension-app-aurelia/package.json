@@ -16,7 +16,7 @@
     "@babel/preset-env": "^7.2.3",
     "aurelia-deps-finder": "^1.1.2",
     "aurelia-testing": "^1.0.0",
-    "autoprefixer": "^9.4.3",
+    "autoprefixer": "^9.4.4",
     "babel-eslint": "^10.0.1",
     "browser-sync": "^2.26.3",
     "connect-history-api-fallback": "^1.5.0",
@@ -36,7 +36,7 @@
     "merge2": "^1.2.3",
     "sass-lint": "^1.12.1",
     "tap-dot": "^2.0.0",
-    "tape": "^4.9.1",
+    "tape": "^4.9.2",
     "tape-run": "^5.0.0"
   },
   "scripts": {

@@ -14,9 +14,9 @@ export class App {
         name: extensionName,
         title: extensionName,
         nav: true,
-        moduleId: './load-foreign-extension',
+        moduleId: './load-extension',
         settings: {extensionName},
-        // always replace for load-foreign-extension
+        // always replace for load-extension
         activationStrategy: 'replace'
       });
 

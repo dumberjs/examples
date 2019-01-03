@@ -17,6 +17,8 @@ npx gulp
 ```
 This will start to build all sub projects, it will take a while. Then it will run host-app, automatically open it in browser.
 
+There are three extensions (written in aurelia/vue/react) you can load into host-app. Try the button to fill up the form, then click "load" button.
+
 ## Technical notes:
 1. Host app loads extension bundle with a patched `define` which add `"extension-name/"` to all user space modules (but not package space modules) defined in the extension bundle. Read more about module spaces in [readme of dumber-module-loader](https://github.com/dumberjs/dumber-module-loader).
 2. All extension apps are self runnable, the entry is `src/main.js`. When extension is working in host app, host app doesn't load `extension-name/main`, host app loads `extension-name/extension` (`src/extension.js`), this is the convention in this demo.
