@@ -21,14 +21,16 @@ There are three extensions (written in aurelia/vue/react) you can load into host
 
 ## Technical notes:
 1. Host app loads extension bundle with a patched `define` which add `"extension-name/"` to all user space modules (but not package space modules) defined in the extension bundle. Read more about module spaces in [readme of dumber-module-loader](https://github.com/dumberjs/dumber-module-loader).
-2. All extension apps are self runnable, the entry is `src/main.js`. When extension is working in host app, host app doesn't load `extension-name/main`, host app loads `extension-name/extension` (`src/extension.js`), this is the convention in this demo.
+2. All extension apps are self runnable. When extension is working in host app, host app loads a special `extension-name/extension` (`src/extension.js`), this is the convention in this demo.
   * you can go into every sub project folder, do `npx gulp` to run it in dev mode.
+  * the `src/extension.js` has a convention to follow, read `host-app/src/load-extension.js` for more details.
 3. Note when extension works in host app, the module id gets extra prefix which is different from extension app running in self dev mode. This means in your extension's code, you need to always use relative module path, for example if you want to import file `src/foo.js` from `src/app.js`, do `import foo from './foo';`, do not do `import foo from 'foo';`. Only relative module path can survive extra prefix.
 4. The extension app should use code split to build two bundles:
   * `extension-name` contains all local sources, plus some 3rd party dependencies which the host app might not have.
   * `entry-bundle` contains common npm packages provided by host app, for example, leave all aurelia core packages to entry bundle.
     - note in case of extension in vue/react/..., there is no common npm packages left in `entry-bundle`. The entry-bundle merely contains dumber-module-loader and requirejs config.
   * note two extensions can bundle duplicated npm packages. This is perfectly fine with AMD (requirejs), by default AMD (requirejs) ignores duplicated module definition.
+  * in every sub project, read `tasks/_dumber.js` for more info on code splitting.
 5. `common-ui` is an Aurelia plugin which is loaded by both host app, and extension-app-aurelia dev app. Note we did not load `common-ui` in `extension-app-aurelia/src/extension.js` as host app already provided it.
 
 
