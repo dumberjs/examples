@@ -8,15 +8,15 @@ export class App {
   }
 
   bind() {
-    this.ea.subscribe('plugin:loaded', pluginName => {
+    this.ea.subscribe('extension:loaded', extensionName => {
       this.router.addRoute({
-        route: pluginName,
-        name: pluginName,
-        title: pluginName,
+        route: extensionName,
+        name: extensionName,
+        title: extensionName,
         nav: true,
-        moduleId: './load-foreign-plugin',
-        settings: {pluginName: pluginName},
-        // always replace for load-foreign-plugin
+        moduleId: './load-foreign-extension',
+        settings: {extensionName},
+        // always replace for load-foreign-extension
         activationStrategy: 'replace'
       });
 

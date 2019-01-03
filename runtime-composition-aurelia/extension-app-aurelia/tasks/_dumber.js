@@ -70,15 +70,15 @@ module.exports = dumber({
 
   // Here we skip code splitting in test mode.
   codeSplit: isTest ? undefined : function(moduleId, packageName) {
-    // Here for any local src, put into plugin-au
+    // Here for any local src, put into extension-au
     if (!packageName) {
-      return 'plugin-au';
+      return 'extension-au';
     } else {
       if (packageName.startsWith('bcx-aurelia')) {
         // put bcx-aurelia-dnd and bcx-aurelia-reorderable-repeat
-        // into plugin-au too. Because they are not provided in
+        // into extension-au too. Because they are not provided in
         // host-app
-        return 'plugin-au';
+        return 'extension-au';
       }
     }
     // The codeSplit func does not need to return a valid bundle name.

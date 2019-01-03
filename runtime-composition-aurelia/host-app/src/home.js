@@ -20,52 +20,52 @@ function makeNamespacedDefine(namespace) {
 
 @inject(EventAggregator)
 export class Home {
-  pluginName = '';
-  pluginUrl = '';
+  extensionName = '';
+  extensionUrl = '';
   error = '';
   isLoading = false;
-  loadedPlugins = [];
+  loadedExtensions = [];
 
   constructor(ea) {
     this.ea = ea;
   }
 
   fillupAu() {
-    this.pluginName = 'plugin-au';
-    this.pluginUrl = '/plugin-app-aurelia/scripts/plugin-au.js';
+    this.extensionName = 'extension-au';
+    this.extensionUrl = '/extension-app-aurelia/scripts/extension-au.js';
   }
 
   fillupVue() {
-    this.pluginName = 'plugin-vue';
-    this.pluginUrl = '/plugin-app-vue/scripts/plugin-vue.js';
+    this.extensionName = 'extension-vue';
+    this.extensionUrl = '/extension-app-vue/scripts/extension-vue.js';
   }
 
   fillupReact() {
-    this.pluginName = 'plugin-react';
-    this.pluginUrl = '/plugin-app-react/scripts/plugin-react.js';
+    this.extensionName = 'extension-react';
+    this.extensionUrl = '/extension-app-react/scripts/extension-react.js';
   }
 
-  loadPlugin() {
-    const {pluginName, pluginUrl, loadedPlugins} = this;
-    if (!pluginName || !pluginUrl) return;
-    if (loadedPlugins.indexOf(pluginName) !== -1) {
-      this.error = `Plugin "${pluginName}" has already been loaded.`;
+  loadExtension() {
+    const {extensionName, extensionUrl, loadedExtensions} = this;
+    if (!extensionName || !extensionUrl) return;
+    if (loadedExtensions.indexOf(extensionName) !== -1) {
+      this.error = `Extension "${extensionName}" has already been loaded.`;
       return;
     }
 
     this.error = '';
     this.isLoading = true;
 
-    fetch(pluginUrl).then(response => {
+    fetch(extensionUrl).then(response => {
       if (response.ok) {
         return response.text();
       }
       throw new Error(`${response.status} ${response.statusText}`);
     }).then(bundle => {
       const func = (new Function('define', bundle)).bind(global);
-      func(makeNamespacedDefine(pluginName));
-      loadedPlugins.push(pluginName);
-      this.ea.publish('plugin:loaded', pluginName);
+      func(makeNamespacedDefine(extensionName));
+      loadedExtensions.push(extensionName);
+      this.ea.publish('extension:loaded', extensionName);
     }).catch(err => {
       console.log('err', err);
       this.error = err.message;

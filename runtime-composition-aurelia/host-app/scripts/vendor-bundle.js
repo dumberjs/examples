@@ -30241,13 +30241,13 @@ requirejs.config({
         "app.html",
         "home",
         "home.html",
-        "load-foreign-plugin",
-        "load-foreign-plugin.html",
+        "load-foreign-extension",
+        "load-foreign-extension.html",
         "main",
         "text!app.css",
         "text!app.html",
         "text!home.html",
-        "text!load-foreign-plugin.html"
+        "text!load-foreign-extension.html"
       ],
       "package": []
     }

@@ -2,7 +2,7 @@ import {inject, Aurelia, FrameworkConfiguration} from 'aurelia-framework';
 import {resolveModuleId} from 'dumber-module-loader/dist/id-utils';
 
 @inject(Aurelia)
-export class LoadForeignPlugin {
+export class LoadForeignExtension {
   moduleId;
 
   constructor(au) {
@@ -10,23 +10,23 @@ export class LoadForeignPlugin {
   }
 
   activate(params, routeConfig) {
-    const name = routeConfig.settings.pluginName;
+    const name = routeConfig.settings.extensionName;
     let moduleId;
-    const entry = name + '/plugin';
+    const entry = name + '/extension';
 
     // load the entry module by convention,
-    // all foreign plugins need to take control of the
-    // <div id="plugin"></div> in ./load-foreign-plugin.html
+    // all foreign extensions need to take control of the
+    // <div id="extension"></div> in ./load-foreign-extension.html
     return requirejs([entry])
     .then(results => {
-      const [plugin] = results;
-      // only plugin written in aurelia has entry moduleId
-      moduleId = plugin.moduleId;
-      // other plugin (vue/react) has to enhance <div id="plugin"></div>
+      const [extension] = results;
+      // only extension written in aurelia has entry moduleId
+      moduleId = extension.moduleId;
+      // other extension (vue/react) has to enhance <div id="extension"></div>
       const config = new FrameworkConfiguration(this.au);
 
-      // plugin can load more aurelia plugins
-      return Promise.resolve(plugin.configure(config))
+      // extension can load more aurelia extensions
+      return Promise.resolve(extension.configure(config))
       .then(() => config.apply());
     })
     .then(() => {

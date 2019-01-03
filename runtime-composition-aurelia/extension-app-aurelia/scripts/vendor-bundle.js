@@ -30229,13 +30229,13 @@ requirejs.config({
     "../src": ""
   },
   "bundles": {
-    "plugin-au": {
+    "extension-au": {
       "user": [
         "app",
         "app.css",
         "app.html",
+        "extension",
         "main",
-        "plugin",
         "text!app.css",
         "text!app.html"
       ],

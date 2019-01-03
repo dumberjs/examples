@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "gulp-run": "^1.7.1"
+  }
+}
