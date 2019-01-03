@@ -31,6 +31,6 @@ There are three extensions (written in aurelia/vue/react) you can load into host
     - note in case of extension in vue/react/..., there is no common npm packages left in `entry-bundle`. The entry-bundle merely contains dumber-module-loader and requirejs config.
   * note two extensions can bundle duplicated npm packages. This is perfectly fine with AMD (requirejs), by default AMD (requirejs) ignores duplicated module definition.
   * in every sub project, read `tasks/_dumber.js` for more info on code splitting.
-5. `common-ui` is an Aurelia plugin which is loaded by both host app, and extension-app-aurelia dev app. Note we did not load `common-ui` in `extension-app-aurelia/src/extension.js` as host app already provided it.
+5. `shared-ui` is an Aurelia plugin which is loaded by both host app, and extension-app-aurelia dev app. Note we did not load `shared-ui` in `extension-app-aurelia/src/extension.js` as host app already provided it.
 
 
