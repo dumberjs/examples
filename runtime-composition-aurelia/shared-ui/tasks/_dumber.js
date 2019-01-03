@@ -14,7 +14,7 @@ module.exports = dumber({
   // cache: !isProduction,
 
   // entry bundle name, dumber default is "entry-bundle"
-  entryBundle: 'vendor-bundle',
+  // entryBundle: 'entry-bundle',
 
   // The special depsFinder to teach dumber about Aurelia convention.
   // Aurelia needs this special treatment because heavy convention.
@@ -80,10 +80,10 @@ module.exports = dumber({
   // }
   // If you turned on hash, you need this callback to update index.html
   onManifest: isTest ? undefined : function(filenameMap) {
-    // Update index.html vendor-bundle.js with vendor-bundle.hash...js
-    console.log('Update index.html with ' + filenameMap['vendor-bundle.js']);
+    // Update index.html entry-bundle.js with entry-bundle.hash...js
+    console.log('Update index.html with ' + filenameMap['entry-bundle.js']);
     const indexHtml = fs.readFileSync('_index.html').toString()
-      .replace('vendor-bundle.js', filenameMap['vendor-bundle.js']);
+      .replace('entry-bundle.js', filenameMap['entry-bundle.js']);
 
     fs.writeFileSync('index.html', indexHtml);
   }

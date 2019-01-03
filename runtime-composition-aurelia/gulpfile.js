@@ -1,10 +1,15 @@
 var gulp = require('gulp');
 var run = require('gulp-run');
 
+function buildSharedUI() {
+  console.info('Building shared-ui');
+  return run('cd shared-ui; npm i; npx gulp clean; npx gulp build-plugin').exec();
+}
+
 function buildPart(proj) {
   return () => {
     console.info('Building ' + proj);
-    return run(`cd ${proj}; npm i; npx gulp build`).exec();
+    return run(`cd ${proj}; npm i; npx gulp clean; npx gulp build`).exec();
   };
 }
 
@@ -14,7 +19,8 @@ function runHostApp() {
 }
 
 exports.default = gulp.series(
-  buildPart('shared-ui'),
+  buildSharedUI,
   buildPart('extension-app-aurelia'),
+  buildPart('extension-app-vue'),
   runHostApp
 );

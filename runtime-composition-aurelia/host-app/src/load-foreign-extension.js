@@ -3,6 +3,7 @@ import {resolveModuleId} from 'dumber-module-loader/dist/id-utils';
 
 @inject(Aurelia)
 export class LoadForeignExtension {
+  name;
   moduleId;
 
   constructor(au) {
@@ -10,9 +11,12 @@ export class LoadForeignExtension {
   }
 
   activate(params, routeConfig) {
-    const name = routeConfig.settings.extensionName;
+    this.name = routeConfig.settings.extensionName;
+  }
+
+  attached() {
     let moduleId;
-    const entry = name + '/extension';
+    const entry = this.name + '/extension';
 
     // load the entry module by convention,
     // all foreign extensions need to take control of the
@@ -21,17 +25,35 @@ export class LoadForeignExtension {
     .then(results => {
       const [extension] = results;
       // only extension written in aurelia has entry moduleId
-      moduleId = extension.moduleId;
-      // other extension (vue/react) has to enhance <div id="extension"></div>
-      const config = new FrameworkConfiguration(this.au);
+      // extension in aurelia, uses moduleId and configure.
+      // extension in other libs, uses load and unload.
+      const {moduleId, configure, load, unload} = extension;
 
-      // extension can load more aurelia extensions
-      return Promise.resolve(extension.configure(config))
-      .then(() => config.apply());
-    })
-    .then(() => {
-      // only capture moduleId after configure is done
-      this.moduleId = resolveModuleId(entry, moduleId);
+      if (configure) {
+        const config = new FrameworkConfiguration(this.au);
+
+        // extension can load more aurelia extensions
+        return Promise.resolve(extension.configure(config))
+        .then(() => config.apply())
+        .then(() => {
+          // only capture moduleId after configure is done
+          if (moduleId) {
+            this.moduleId = resolveModuleId(entry, moduleId);
+          }
+        });
+      }
+
+      // other extension (vue/react) has to enhance <div id="extension"></div>
+      if (load) {
+        this._unload = unload;
+        return Promise.resolve(load());
+      }
     });
+  }
+
+  detached() {
+    if (this._unload) {
+      return Promise.resolve(this._unload());
+    }
   }
 }

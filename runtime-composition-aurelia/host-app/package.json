@@ -45,7 +45,7 @@
     "lint": "npm run eslint && npm run sass-lint && npm run htmlhint",
     "pretest": "npm run lint && npm run test-build",
     "test-build": "cross-env NODE_ENV=test gulp build",
-    "test": "tape-run < scripts/vendor-bundle.js | tap-dot",
-    "browser-test": "npm run test-build && browser-run --browser chrome < scripts/vendor-bundle.js"
+    "test": "tape-run < scripts/entry-bundle.js | tap-dot",
+    "browser-test": "npm run test-build && browser-run --browser chrome < scripts/entry-bundle.js"
   }
 }

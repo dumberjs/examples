@@ -3,6 +3,8 @@ import {inject} from 'aurelia-framework';
 import {parse} from 'dumber-module-loader/dist/id-utils';
 
 // only apply name space for user module space
+// note we use global.define here to avoid confusing dumber's code analysis.
+// global is one of supported Nodejs global variables.
 function makeNamespacedDefine(namespace) {
   const wrapped = function(moduleId, deps, cb) {
     if (global.define.currentSpace() === 'user') {
@@ -13,6 +15,7 @@ function makeNamespacedDefine(namespace) {
     }
   }
 
+  wrapped.amd = global.define.amd;
   wrapped.switchToUserSpace = global.define.switchToUserSpace;
   wrapped.switchToPackageSpace = global.define.switchToPackageSpace;
   return wrapped;
@@ -37,12 +40,12 @@ export class Home {
 
   fillupVue() {
     this.extensionName = 'extension-vue';
-    this.extensionUrl = '/extension-app-vue/scripts/extension-vue.js';
+    this.extensionUrl = '/extension-app-vue/dist/extension-vue.js';
   }
 
   fillupReact() {
     this.extensionName = 'extension-react';
-    this.extensionUrl = '/extension-app-react/scripts/extension-react.js';
+    this.extensionUrl = '/extension-app-react/dist/extension-react.js';
   }
 
   loadExtension() {
