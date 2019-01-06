@@ -9,6 +9,7 @@ var gulpCache = require('gulp-cache')
 var gulpif = require('gulp-if')
 var autoprefixer = require('autoprefixer')
 var postcssUrl = require('postcss-url')
+var projectName = require('../package.json').name;
 
 var {isProduction} = require('./_env')
 var dr = require('./_dumber')
@@ -17,7 +18,7 @@ function buildJs(src) {
   let transpile = babel()
   // Use gulp-cache if not in production mode
   if (!isProduction) {
-    transpile = gulpCache(transpile, {name: 'connected-react-router-jest'})
+    transpile = gulpCache(transpile, {name: projectName})
   }
 
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly

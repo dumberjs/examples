@@ -4,6 +4,7 @@ var plumber = require('gulp-plumber');
 var terser = require('gulp-uglify-es').default;
 var gulpCache = require('gulp-cache');
 var gulpif = require('gulp-if');
+var projectName = require('../package.json').name;
 
 var {isProduction} = require('./_env');
 var dr = require('./_dumber');
@@ -12,7 +13,7 @@ function buildJs(src) {
   let transpile = babel();
   // Use gulp-cache if not in production mode
   if (!isProduction) {
-    transpile = gulpCache(transpile, {name: 'vue-esnext-jest'});
+    transpile = gulpCache(transpile, {name: projectName});
   }
 
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly

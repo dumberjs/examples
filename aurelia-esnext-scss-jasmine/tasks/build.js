@@ -9,6 +9,7 @@ var terser = require('gulp-uglify-es').default;
 var gulpCache = require('gulp-cache');
 var gulpif = require('gulp-if');
 var autoprefixer = require('autoprefixer');
+var projectName = require('../package.json').name;
 
 var {isProduction, isTest, outputDir} = require('./_env');
 var dr = require('./_dumber');
@@ -17,7 +18,7 @@ function buildJs(src) {
   let transpile = babel();
   // Use gulp-cache if not in production mode
   if (!isProduction) {
-    transpile = gulpCache(transpile, {name: 'aurelia-esnext-scss-jasmine'});
+    transpile = gulpCache(transpile, {name: projectName});
   }
 
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly
