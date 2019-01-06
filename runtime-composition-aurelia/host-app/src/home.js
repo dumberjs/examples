@@ -1,3 +1,4 @@
+/* global requirejs */
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {inject} from 'aurelia-framework';
 
@@ -49,8 +50,16 @@ export class Home {
       },
       bundles: {
         [extensionName]: {
+          // Name spaced bundle
+          // This is a dumber-module-loader feature.
+          // All modules in user module space will have module name prefixed.
+          // For instance, user module 'foo' will be loaded as 'name-space/foo'.
+          // Package module space is not affected, 'lodash' will still be 'lodash'.
           nameSpace: extensionName,
-          user: ['extension'] // only need to identify the entry module
+          // Only need to identify the entry module.
+          // Entry module 'extension' is a convention only in this demo.
+          // src/load-extension.js will try to load 'name-space/extension'.
+          user: ['extension']
         }
       }
     });
