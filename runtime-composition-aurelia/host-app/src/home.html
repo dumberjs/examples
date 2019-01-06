@@ -17,6 +17,6 @@
   <input type="text" style="width:20rem;" value.bind="extensionName"><br>
   <div>Extension Bundle file URL</div>
   <input type="text" style="width:20rem;" value.bind="extensionUrl"><br>
-  <button disabled.bind="!extensionName || !extensionUrl || isLoading" click.trigger="loadExtension()">Load</button>
+  <button disabled.bind="!extensionName || !extensionUrl" click.trigger="loadExtension()">Load</button>
 
 </template>

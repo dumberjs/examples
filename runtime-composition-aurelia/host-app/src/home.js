@@ -1,37 +1,13 @@
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {inject} from 'aurelia-framework';
-import {parse} from 'dumber-module-loader/dist/id-utils';
 
-// In future, I might push this feature into dumber or dumber-module-loader.
-//
-// Only apply name space for user module space.
-// Note we use global.define here to avoid confusing dumber's code analysis.
-// global is one of supported Nodejs global variables in dumber bundler.
-function makeNamespacedDefine(namespace) {
-  const wrapped = function(moduleId, deps, cb) {
-    // only add namespace for modules in user space
-    // also skip any ext: plugin (a dumber-module-loader feature)
-    if (global.define.currentSpace() === 'user' && !moduleId.startsWith('ext:')) {
-      const parsed = parse(moduleId);
-      return global.define(parsed.prefix + namespace + '/' + parsed.bareId, deps, cb);
-    } else {
-      global.define(moduleId, deps, cb);
-    }
-  }
-
-  wrapped.amd = global.define.amd;
-  wrapped.switchToUserSpace = global.define.switchToUserSpace;
-  wrapped.switchToPackageSpace = global.define.switchToPackageSpace;
-  return wrapped;
-}
+const loadedExtensions = [];
 
 @inject(EventAggregator)
 export class Home {
   extensionName = '';
   extensionUrl = '';
   error = '';
-  isLoading = false;
-  loadedExtensions = [];
 
   constructor(ea) {
     this.ea = ea;
@@ -53,32 +29,33 @@ export class Home {
   }
 
   loadExtension() {
-    const {extensionName, extensionUrl, loadedExtensions} = this;
+    const {extensionName, extensionUrl} = this;
     if (!extensionName || !extensionUrl) return;
-    if (loadedExtensions.indexOf(extensionName) !== -1) {
-      this.error = `Extension "${extensionName}" has already been loaded.`;
+    this.error = '';
+
+    if (loadedExtensions.some(e =>
+          e.extensionName === extensionName ||
+          e.extensionUrl === extensionUrl
+        )) {
+      this.error = `Extension "${extensionName}" (${extensionUrl}) has already been loaded.`;
       return;
     }
 
-    this.error = '';
-    this.isLoading = true;
-
-    fetch(extensionUrl).then(response => {
-      if (response.ok) {
-        return response.text();
+    // This does not destroy existing dumber-module-loader config,
+    // it merges into existing config.
+    requirejs.config({
+      paths: {
+        [extensionName]: extensionUrl
+      },
+      bundles: {
+        [extensionName]: {
+          nameSpace: extensionName,
+          user: ['extension'] // only need to identify the entry module
+        }
       }
-      throw new Error(`${response.status} ${response.statusText}`);
-    }).then(bundle => {
-      const func = (new Function('define', bundle)).bind(global);
-      func(makeNamespacedDefine(extensionName));
-      loadedExtensions.push(extensionName);
-      this.ea.publish('extension:loaded', extensionName);
-    }).catch(err => {
-      console.log('err', err);
-      this.error = err.message;
-      console.error(err.stack);
-    }).then(() => {
-      this.isLoading = false;
     });
+
+    loadedExtensions.push({extensionName, extensionUrl});
+    this.ea.publish('extension:loaded', extensionName);
   }
 }
