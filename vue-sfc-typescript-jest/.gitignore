@@ -1,0 +1,17 @@
+# OS
+.DS_STORE
+Thumbs.db
+
+# Editors
+.idea
+.vscode
+
+# Dependencies
+/node_modules
+/yarn.lock
+/package-lock.json
+/shrinkwrap.yaml
+
+# Compiled files
+/dist
+/index.html
