@@ -6,7 +6,7 @@
 * [aurelia-typescript-scss-tape](https://github.com/dumberjs/examples/tree/master/aurelia-typescript-scss-tape)
 * [vue-esnext-lazy-loading-jest](https://github.com/dumberjs/examples/tree/master/vue-esnext-lazy-loading-jest)
   - shows ES Dynamic Import
-* [vue-sfc-esnext-lazy-loading-jest](https://github.com/dumberjs/examples/tree/master/vue-esnext-lazy-loading-jest)
+* [vue-sfc-esnext-lazy-loading-jest](https://github.com/dumberjs/examples/tree/master/vue-sfc-esnext-lazy-loading-jest)
   - `.vue` file Single File Component
   - inline images in css (postcss-url)
   - shows ES Dynamic Import
