@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "dependencies": {
-    "vue": "^2.5.21"
+    "vue": "^2.5.22"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -16,19 +16,19 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "browser-sync": "^2.26.3",
-    "connect-history-api-fallback": "^1.5.0",
+    "connect-history-api-fallback": "^1.6.0",
     "cross-env": "^5.2.0",
     "del": "^3.0.0",
-    "eslint": "^5.11.1",
+    "eslint": "^5.12.1",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
-    "gulp-cache": "^1.0.2",
-    "gulp-dumber": "^0.7.0",
+    "gulp-cache": "^1.1.0",
+    "gulp-dumber": "^0.7.3",
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.2.1",
     "gulp-uglify-es": "^1.0.4",
     "jest": "^23.6.0",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.22"
   },
   "scripts": {
     "lint": "eslint src test",

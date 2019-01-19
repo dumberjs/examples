@@ -1,3 +1,4 @@
+/* global requirejs */
 import {inject, Aurelia, FrameworkConfiguration} from 'aurelia-framework';
 import {resolveModuleId} from 'dumber-module-loader/dist/id-utils';
 
@@ -15,7 +16,6 @@ export class LoadForeignExtension {
   }
 
   attached() {
-    let moduleId;
     const entry = this.name + '/extension';
 
     // load the entry module by convention,

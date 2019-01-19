@@ -14,20 +14,20 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
-    "autoprefixer": "^9.4.3",
+    "autoprefixer": "^9.4.5",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "browser-sync": "^2.26.3",
-    "connect-history-api-fallback": "^1.5.0",
+    "connect-history-api-fallback": "^1.6.0",
     "cross-env": "^5.2.0",
     "del": "^3.0.0",
-    "eslint": "^5.11.1",
-    "eslint-plugin-react": "^7.12.1",
+    "eslint": "^5.12.1",
+    "eslint-plugin-react": "^7.12.4",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
-    "gulp-cache": "^1.0.2",
-    "gulp-dumber": "^0.7.0",
+    "gulp-cache": "^1.1.0",
+    "gulp-dumber": "^0.7.3",
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
@@ -45,7 +45,9 @@
     "test": "jest"
   },
   "jest": {
-    "moduleFileExtensions": ["js"],
+    "moduleFileExtensions": [
+      "js"
+    ],
     "moduleNameMapper": {
       ".+\\.css$": "<rootDir>/test/dummy.js"
     },
