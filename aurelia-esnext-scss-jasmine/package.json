@@ -30,7 +30,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-preprocess": "^3.0.1",
     "gulp-sass": "^4.0.2",
-    "gulp-uglify-es": "^1.0.4",
+    "gulp-terser": "^1.1.7",
     "jasmine-core": "^3.3.0",
     "jasmine-reporters": "^2.3.2",
     "merge2": "^1.2.3",

@@ -32,7 +32,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
-    "gulp-uglify-es": "^1.0.4",
+    "gulp-terser": "^1.1.7",
     "jest": "^23.6.0",
     "jest-transform-stub": "^1.0.0",
     "merge2": "^1.2.3",

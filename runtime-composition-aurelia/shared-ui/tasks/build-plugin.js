@@ -1,6 +1,6 @@
 var merge2 = require('merge2');
 var gulp = require('gulp');
-var terser = require('gulp-uglify-es').default;
+var terser = require('gulp-terser');
 var del = require('del');
 var {buildJs, buildCss} = require('./build');
 
