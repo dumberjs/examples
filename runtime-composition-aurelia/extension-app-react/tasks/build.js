@@ -18,7 +18,7 @@ function buildJs(src) {
   let transpile = babel()
   // Use gulp-cache if not in production mode
   if (!isProduction) {
-    // disable gulp-cache due to jgable/gulp-cache#75 // transpile = gulpCache(transpile, {name: projectName})
+    transpile = gulpCache(transpile, {name: projectName})
   }
 
   // Note with gulp v4, gulp.src and gulp.dest supports sourcemaps directly

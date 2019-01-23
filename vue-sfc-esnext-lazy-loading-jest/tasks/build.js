@@ -31,7 +31,7 @@ function build() {
   });
   // Use gulp-cache if not in production mode
   if (!isProduction) {
-    // disable gulp-cache due to jgable/gulp-cache#75 // compileVue = gulpCache(compileVue, {name: projectName});
+    compileVue = gulpCache(compileVue, {name: projectName});
   }
 
   // Merge all js/css/html file streams to feed greedy dumber.
