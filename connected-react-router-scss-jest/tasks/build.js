@@ -9,7 +9,7 @@ var gulpCache = require('gulp-cache')
 var gulpif = require('gulp-if')
 var autoprefixer = require('autoprefixer')
 var postcssUrl = require('postcss-url')
-var projectName = require('../package.json').name;
+var projectName = require('../package.json').name
 
 var {isProduction} = require('./_env')
 var dr = require('./_dumber')
