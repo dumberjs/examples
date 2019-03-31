@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 var gulp = require('gulp')
-var browserSync = require('browser-sync')
+var bs = require('browser-sync').create()
 var historyApiFallback = require('connect-history-api-fallback/lib')
 
 var clean = require('./clean')
@@ -10,7 +10,7 @@ var build = require('./build')
 const serve = gulp.series(
   build,
   function startServer(done) {
-    browserSync({
+    bs.init({
       ghostMode: false,
       online: false,
       open: true,
@@ -41,7 +41,7 @@ const serve = gulp.series(
 // Reload browserSync
 function reload(done) {
   console.log('Refreshing the browser')
-  browserSync.reload()
+  bs.reload()
   done()
 }
 
