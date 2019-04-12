@@ -37,6 +37,8 @@ module.exports = dumber({
     // Turn on tap reporter (from jasmine-reporters), so results can be piped to tape-run.
     // Note prepend accepts direct JavaScript content.
     isTest && "jasmine.getEnv().addReporter(new jasmineReporters.TapReporter());",
+    // Promise polyfill for IE
+    "node_modules/promise-polyfill/dist/polyfill.min.js"
   ],
 
   // append after amd loader and all module definitions in entry bundle.

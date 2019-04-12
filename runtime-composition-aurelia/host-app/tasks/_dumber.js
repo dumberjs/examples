@@ -28,7 +28,10 @@ module.exports = dumber({
 
   // prepend before amd loader.
   // dumber-module-loader is injected automatically by dumber bundler after prepends.
-  // prepend: [],
+  prepend: [
+    // Promise polyfill for IE
+    // "node_modules/promise-polyfill/dist/polyfill.min.js"
+  ],
 
   // append after amd loader and all module definitions in entry bundle.
   append: [

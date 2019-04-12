@@ -66,7 +66,7 @@ function build() {
   .pipe(gulpif(isProduction, terser({compress: false})))
 
   // Want to write bundle files? Sure, gulp can do it, dumber is too dumb to do it.
-  .pipe(gulp.dest(outputDir, {sourcemaps: !isProduction}));
+  .pipe(gulp.dest(outputDir, {sourcemaps: isProduction ? false : '.'}));
 }
 
 module.exports = build;

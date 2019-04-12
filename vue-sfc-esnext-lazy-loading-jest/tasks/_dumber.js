@@ -22,7 +22,6 @@ module.exports = dumber({
 
   // prepend before amd loader.
   // dumber-module-loader is injected automatically by dumber bundler after prepends.
-  // Here we load all jasmine stuff in global name space in test mode.
   // prepend: [],
 
   // append after amd loader and all module definitions in entry bundle.

@@ -4,31 +4,30 @@
   "version": "0.1.0",
   "license": "MIT",
   "dependencies": {
-    "vue": "^2.6.9"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.0",
+    "@babel/core": "^7.4.3",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/polyfill": "^7.4.0",
-    "@babel/preset-env": "^7.4.1",
+    "@babel/preset-env": "^7.4.3",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.5.0",
+    "babel-jest": "^24.7.1",
     "browser-sync": "^2.26.3",
     "connect-history-api-fallback": "^1.6.0",
     "cross-env": "^5.2.0",
-    "del": "^4.0.0",
-    "eslint": "^5.15.3",
+    "del": "^4.1.0",
+    "eslint": "^5.16.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-cache": "^1.1.1",
-    "gulp-dumber": "^0.10.2",
+    "gulp-dumber": "^0.10.3",
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.2.1",
     "gulp-terser": "^1.1.7",
-    "jest": "^24.5.0",
-    "vue-template-compiler": "^2.6.9"
+    "jest": "^24.7.1",
+    "vue-template-compiler": "^2.6.10"
   },
   "scripts": {
     "lint": "eslint src test",
