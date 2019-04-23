@@ -30,8 +30,7 @@ module.exports = dumber({
   // Explicit dependencies, can use either "deps" (short name) or "dependencies" (full name).
   deps: [
     // This explicit dep overwrites vue's main file from 'dist/vue.runtime.esm.js' to 'dist/vue.js'.
-    // Since dumber didn't have `.vue` file support, we have to use dist/vue.js which includes
-    // template compiler.
+    // We have to use dist/vue.js which includes template compiler.
     {name: 'vue', main: isProduction ? 'dist/vue.min.js' : 'dist/vue.js'}
   ],
 
