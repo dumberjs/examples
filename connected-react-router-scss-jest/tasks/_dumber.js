@@ -32,7 +32,7 @@ module.exports = dumber({
   // No need for other frameworks like Vue/React/...
   // deps: [],
 
-  // Code split is the feature that dumber really kicks ass.
+  // Code split is intuitive and flexible..
   // code split asks you for a bundle name of every module, it gives you
   // two parameters:
   // moduleId:

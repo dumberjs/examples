@@ -35,7 +35,7 @@ module.exports = dumber({
     {name: 'vue', main: isProduction ? 'dist/vue.min.js' : 'dist/vue.js'}
   ],
 
-  // Code split is the feature that dumber really kicks ass.
+  // Code split is intuitive and flexible..
   // code split asks you for a bundle name of every module, it gives you
   // two parameters:
   // moduleId:
