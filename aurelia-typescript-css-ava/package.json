@@ -1,0 +1,46 @@
+{
+  "name": "aurelia-typescript-css-ava",
+  "description": "",
+  "keywords": [],
+  "private": true,
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "typescript": "^3.4.5",
+    "gulp-typescript": "^5.0.1",
+    "tslint": "5.16.0",
+    "merge2": "^1.2.3",
+    "gulp-postcss": "^8.0.0",
+    "autoprefixer": "^9.5.1",
+    "postcss-url": "^8.0.0",
+    "browser-sync": "^2.26.3",
+    "connect-history-api-fallback": "^1.6.0",
+    "cross-env": "^5.2.0",
+    "del": "^4.1.0",
+    "gulp": "^4.0.0",
+    "gulp-cache": "^1.1.1",
+    "gulp-dumber": "^0.10.3",
+    "gulp-if": "^2.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-terser": "^1.1.7",
+    "promise-polyfill": "^8.1.0",
+    "aurelia-deps-finder": "^1.1.2",
+    "aurelia-testing": "^1.0.0",
+    "gulp-preprocess": "^3.0.2",
+    "htmlhint": "0.11.0",
+    "aurelia-pal-nodejs": "^1.2.0",
+    "aurelia-loader-nodejs": "^1.0.1",
+    "ava": "^1.4.1",
+    "ts-node": "^8.1.0"
+  },
+  "scripts": {
+    "js-lint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'",
+    "html-lint": "htmlhint -c .htmlhintrc src",
+    "lint": "npm run js-lint && npm run html-lint",
+    "pretest": "npm run lint",
+    "test": "ava"
+  },
+  "dependencies": {
+    "aurelia-bootstrapper": "^2.3.3"
+  }
+}

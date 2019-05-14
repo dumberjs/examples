@@ -4,6 +4,7 @@
   - shows direct importing a wasm file
 * [aurelia-esnext-scss-jest](https://github.com/dumberjs/examples/tree/master/aurelia-esnext-scss-jest)
 * [aurelia-typescript-scss-tape](https://github.com/dumberjs/examples/tree/master/aurelia-typescript-scss-tape)
+* [aurelia-typescript-css-ava](https://github.com/dumberjs/examples/tree/master/aurelia-typescript-css-ava)
 * [vue-esnext-lazy-loading-jest](https://github.com/dumberjs/examples/tree/master/vue-esnext-lazy-loading-jest)
   - shows ES Dynamic Import
 * [vue-sfc-esnext-lazy-loading-jest](https://github.com/dumberjs/examples/tree/master/vue-sfc-esnext-lazy-loading-jest)
