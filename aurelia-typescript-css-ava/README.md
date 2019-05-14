@@ -37,3 +37,9 @@ Clear tracing cache by dumber.
 npx gulp clear-cache
 ```
 
+## Nodejs test
+```
+npm test
+```
+
+Details in package.json -> scripts -> pretest & test.
