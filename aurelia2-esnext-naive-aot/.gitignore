@@ -1,0 +1,16 @@
+# OS
+.DS_STORE
+Thumbs.db
+
+# Editors
+.idea
+.vscode
+
+# Dependencies
+/node_modules
+/package-lock.json
+
+# Compiled files
+/dist
+/index.html
+
