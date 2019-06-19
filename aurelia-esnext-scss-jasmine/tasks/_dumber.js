@@ -28,15 +28,7 @@ module.exports = dumber({
 
   // prepend before amd loader.
   // dumber-module-loader is injected automatically by dumber bundler after prepends.
-  // Here we load all jasmine stuff in global name space in test mode.
   prepend: [
-    isTest && "node_modules/jasmine-core/lib/jasmine-core/jasmine.js",
-    isTest && "node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js",
-    isTest && "node_modules/jasmine-core/lib/jasmine-core/boot.js",
-    isTest && "node_modules/jasmine-reporters/src/tap_reporter.js",
-    // Turn on tap reporter (from jasmine-reporters), so results can be piped to tape-run.
-    // Note prepend accepts direct JavaScript content.
-    isTest && "jasmine.getEnv().addReporter(new jasmineReporters.TapReporter());",
     // Promise polyfill for IE
     "node_modules/promise-polyfill/dist/polyfill.min.js"
   ],

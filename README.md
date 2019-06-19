@@ -22,7 +22,3 @@
 
 * [runtime-composition-aurelia](https://github.com/dumberjs/examples/tree/master/runtime-composition-aurelia)
   - runtime composition of a base app + extension apps
-
-## Issues
-
-We use `browser-run` in most testing setup here. `browser-run` has [really bad browser detection on Windows](https://github.com/juliangruber/browser-run/issues/75). When run `npm run browser-test`, Windows users may see error `no matches for chrome/*`.

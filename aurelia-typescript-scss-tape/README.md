@@ -54,11 +54,6 @@ npm test
 
 Details in package.json -> scripts -> pretest & test.
 
-1. no karma, no hacking, just browser-run (tape-run wraps browser-run).
-2. note `| tap-dot` is optional, `tap-dot` is just a tap result formatter to please the eyes.
-
-Read more in `tasks/build.js`.
-
 ## Visible browser (chrome) test
 ```
 npm run browser-test
@@ -69,7 +64,7 @@ Then view the testing results in browser console.
 ## Manual visible other browser (firefox, edge, safari) test
 ```
 npm run test-build
-npx browser-run --browser firefox < scripts/vendor-bundle.js
+npx browser-do --tap --browser firefox --keep-open < scripts/vendor-bundle.js
 ```
 
 Then view the testing results in browser console.
