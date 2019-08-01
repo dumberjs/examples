@@ -1,5 +1,11 @@
 # Example apps using dumber bundler
 
+The easiest way to try out dumber is to use command:
+
+    npx makes dumberjs
+
+to create a new JavaScript SPA project with dumber bundler.
+
 **Document site (WIP)**: https://dumberjs.github.io
 
 * [aurelia-esnext-scss-jasmine](https://github.com/dumberjs/examples/tree/master/aurelia-esnext-scss-jasmine)
