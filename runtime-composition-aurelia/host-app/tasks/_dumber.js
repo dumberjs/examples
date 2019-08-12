@@ -42,13 +42,7 @@ module.exports = dumber({
   ],
 
   // Explicit dependencies, can use either "deps" (short name) or "dependencies" (full name).
-  // Here we load Aurelia packages which are not explicitly required by user code.
-  // No need for other frameworks like Vue/React/...
   deps: [
-    "aurelia-bootstrapper",
-    "aurelia-loader-default",
-    "aurelia-pal-browser",
-
     // Use explicit config for shared-ui plugin.
     // This is not needed in real situation when you install shared-ui npm package through a private git repo.
     // We need this for this demo because shared-ui is not in a dedicated git repo, so that I have no way to

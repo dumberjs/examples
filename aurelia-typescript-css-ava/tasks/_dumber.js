@@ -38,11 +38,7 @@ module.exports = dumber({
   ],
 
   // Explicit dependencies, can use either "deps" (short name) or "dependencies" (full name).
-  // Here we load Aurelia packages which are not explicitly required by user code.
   deps: [
-    "aurelia-bootstrapper",
-    "aurelia-loader-default",
-    "aurelia-pal-browser"
   ],
 
   // Code split is intuitive and flexible.
