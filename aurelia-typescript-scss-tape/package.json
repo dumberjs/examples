@@ -7,7 +7,7 @@
     "aurelia-bootstrapper": "^2.3.3"
   },
   "devDependencies": {
-    "aurelia-deps-finder": "^1.4.0",
+    "aurelia-deps-finder": "^2.0.0",
     "aurelia-testing": "^1.0.0",
     "autoprefixer": "^9.6.0",
     "browser-sync": "^2.26.7",
@@ -17,7 +17,7 @@
     "eslint": "^5.16.0",
     "gulp": "^4.0.2",
     "gulp-cache": "^1.1.2",
-    "gulp-dumber": "^0.13.0",
+    "gulp-dumber": "^1.0.0",
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
