@@ -6,7 +6,7 @@ The easiest way to try out dumber is to use command:
 
 to create a new JavaScript SPA project with dumber bundler.
 
-**Document site (WIP)**: https://dumberjs.github.io
+**Document site (80% completed)**: https://dumberjs.github.io
 
 * [aurelia-esnext-scss-jasmine](https://github.com/dumberjs/examples/tree/master/aurelia-esnext-scss-jasmine)
   - shows direct importing a wasm file
