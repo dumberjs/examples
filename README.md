@@ -15,8 +15,6 @@ The easiest way to try out dumber is to use "makes" to create a new JavaScript S
 * [aurelia-esnext-scss-jest](https://github.com/dumberjs/examples/tree/master/aurelia-esnext-scss-jest)
 * [aurelia-typescript-scss-tape](https://github.com/dumberjs/examples/tree/master/aurelia-typescript-scss-tape)
 * [aurelia-typescript-css-ava](https://github.com/dumberjs/examples/tree/master/aurelia-typescript-css-ava)
-* [aurelia2-esnext-naive-aot](https://github.com/dumberjs/examples/tree/master/aurelia2-esnext-naive-aot)
-  - experiemental aurelia 2 example with a naive implementation of aot
 * [vue-esnext-lazy-loading-jest](https://github.com/dumberjs/examples/tree/master/vue-esnext-lazy-loading-jest)
   - shows ES Dynamic Import
 * [vue-sfc-esnext-lazy-loading-jest](https://github.com/dumberjs/examples/tree/master/vue-sfc-esnext-lazy-loading-jest)
