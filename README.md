@@ -1,12 +1,14 @@
 # Example apps using dumber bundler
 
-The easiest way to try out dumber is to use command:
+The easiest way to try out dumber is to use "makes" to create a new JavaScript SPA project:
 
     npx makes dumberjs
 
-to create a new JavaScript SPA project with dumber bundler.
-
 **Document site (80% completed)**: https://dumber.js.org
+
+-----
+
+**The examples in this repo are not always up to date.**
 
 * [aurelia-esnext-scss-jasmine](https://github.com/dumberjs/examples/tree/master/aurelia-esnext-scss-jasmine)
   - shows direct importing a wasm file
