@@ -24,6 +24,11 @@ The easiest way to try out dumber is to use "makes" to create a new JavaScript S
 * [connected-react-router-scss-jest](https://github.com/dumberjs/examples/tree/master/connected-react-router-scss-jest)
   - shows import css file through JavaScript
 
+## Common recipes demos
+
+* [demo-copy-fonts](https://github.com/dumberjs/examples/tree/master/demo-copy-fonts)
+  - shows how to copy resource files (images or fonts) through gulp to satisfy CSS library.
+
 ## Advanced demos
 
 * [runtime-composition-aurelia](https://github.com/dumberjs/examples/tree/master/runtime-composition-aurelia)
