@@ -8,9 +8,9 @@ Thumbs.db
 
 # Dependencies
 /node_modules
-/yarn.lock
-/package-lock.json
-/shrinkwrap.yaml
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
 
 # Compiled files
 /scripts
