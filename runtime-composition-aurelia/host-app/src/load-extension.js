@@ -3,7 +3,7 @@ import {inject, Aurelia, FrameworkConfiguration} from 'aurelia-framework';
 import {resolveModuleId} from 'dumber-module-loader/dist/id-utils';
 
 @inject(Aurelia)
-export class LoadForeignExtension {
+export class LoadExtension {
   name;
   moduleId;
 
